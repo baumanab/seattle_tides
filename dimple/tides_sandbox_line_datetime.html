@@ -1,0 +1,40 @@
+<!----------------------------------------------------------------->
+<!-- AUTOMATICALLY GENERATED CODE - PLEASE EDIT TEMPLATE INSTEAD -->
+<!----------------------------------------------------------------->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<div id="chartContainer">
+  <script src="/lib/d3.v3.4.8.js"></script>
+  <script src="/dist/dimple.v2.1.6.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    d3.tsv("tide_days.tsv", function (data) {
+
+      // Filter for a single Date
+      data = dimple.filterData(data, "Date", "2015-08-22");
+
+      // Create and Position a Chart
+      var myChart = new dimple.chart(svg, data);
+      myChart.setBounds(60, 30, 500, 300);
+      var x = myChart.addCategoryAxis("x", "Time")
+      myChart.addMeasureAxis("y", "Level");
+
+      // Order the x axis by Time
+      x.addOrderRule("Time");
+
+      // wait and stop will be red, walk and start will be green
+      //myChart.addColorAxis("start_stop", ["green", "yellow", "red"]);
+
+      // Add a thick line without markers
+      var lines = myChart.addSeries(null, dimple.plot.line); 
+      lines.lineWeight = 5;
+      lines.lineMarkers = false;
+
+      // Draw the chart
+      myChart.draw();
+
+    });
+  </script>
+</div>
+</html>
