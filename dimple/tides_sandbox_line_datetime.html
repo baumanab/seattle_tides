@@ -13,15 +13,20 @@
 
       // Filter for a single Date
       data = dimple.filterData(data, "Date", "2015-08-22");
+	  
+ 
 
       // Create and Position a Chart
       var myChart = new dimple.chart(svg, data);
       myChart.setBounds(60, 30, 500, 300);
-      var x = myChart.addCategoryAxis("x", "Time")
+      var x = myChart.addTimeAxis("x", "DateTime","%Y-%m-%d %H:%M:%S","%H:%M");
       myChart.addMeasureAxis("y", "Level");
+	  
+	  // Draw a label for each hour
+	  x.timePeriod = d3.time.hours;
+      x.timeInterval = 1;
 
-      // Order the x axis by Time
-      x.addOrderRule("Time");
+
 
       // wait and stop will be red, walk and start will be green
       //myChart.addColorAxis("start_stop", ["green", "yellow", "red"]);
