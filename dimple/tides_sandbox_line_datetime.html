@@ -12,7 +12,7 @@
     d3.tsv("tide_days.tsv", function (data) {
 
       // Filter for a single Date
-      data = dimple.filterData(data, "Date", "2015-08-22");
+      data = dimple.filterData(data, "Date", "2015-08-26");
 	  
  
 
@@ -28,13 +28,17 @@
 
 
 
-      // wait and stop will be red, walk and start will be green
-      //myChart.addColorAxis("start_stop", ["green", "yellow", "red"]);
+      
 
       // Add a thick line without markers
-      var lines = myChart.addSeries(null, dimple.plot.line); 
+      var lines = myChart.addSeries([null,"start_stop"], dimple.plot.line); 
       lines.lineWeight = 5;
       lines.lineMarkers = false;
+	  
+	  // wait and stop will be red, walk and start will be green
+      //myChart.addColorAxis("start_stop", ["green", "green", "green", "green"]);
+	  
+	  // Add scatter for 
 
       // Draw the chart
       myChart.draw();
