@@ -9,7 +9,7 @@
   <script src="/dist/dimple.v2.1.6.js"></script>
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
-    d3.tsv("tide_days.tsv", function (data) {
+    d3.tsv("data/tide_days.tsv", function (data) {
 
       // Filter for a single Date
       data = dimple.filterData(data, "Date", "2015-08-26");
@@ -31,7 +31,7 @@
       
 
       // Add a thick line without markers
-      var lines = myChart.addSeries([null,"start_stop"], dimple.plot.line); 
+      var lines = myChart.addSeries(null, dimple.plot.line); 
       lines.lineWeight = 5;
       lines.lineMarkers = false;
 	  
