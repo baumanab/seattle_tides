@@ -1,0 +1,56 @@
+<!----------------------------------------------------------------->
+<!-- AUTOMATICALLY GENERATED CODE - PLEASE EDIT TEMPLATE INSTEAD -->
+<!----------------------------------------------------------------->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<div id="chartContainer">
+  <script src="/lib/d3.v3.4.8.js"></script>
+  <script src="/dist/dimple.v2.1.6.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    d3.tsv("data/tide_days.tsv", function (data) {
+
+      // Filter for a single Date
+      data_day = dimple.filterData(data, "Date", "2016-06-06");
+	  data_status = dimple.filterData(data_day,"start_stop",["start","stop"])
+	  
+ 
+
+      // Create and Position a Chart
+      var myChart = new dimple.chart(svg);
+      myChart.setBounds(60, 30, 500, 300);
+      var x = myChart.addTimeAxis("x", "DateTime","%Y-%m-%d %H:%M:%S","%H:%M");
+      myChart.addMeasureAxis("y", "Level");
+	  
+	  // Draw a label for each hour
+	  x.timePeriod = d3.time.hours;
+      x.timeInterval = 1;
+	  
+      
+
+      // Add a thick line without markers
+      var lines = myChart.addSeries(null, dimple.plot.line); 
+      lines.lineWeight = 5;
+      lines.lineMarkers = false;
+	  
+	  // Link the date selected data
+	  lines.data = data_day;
+	  
+	  var bubble = myChart.addSeries(null,dimple.plot.bubble);
+	  
+	  // Link the start_stop selected data
+	  bubble.data = data_status
+	  
+	  // wait and stop will be red, walk and start will be green
+      //myChart.addColorAxis("start_stop", ["green", "green", "green", "green"]);
+	  
+	  // Add scatter for 
+
+      // Draw the chart
+      myChart.draw();
+
+    });
+  </script>
+</div>
+</html>
