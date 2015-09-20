@@ -27,30 +27,28 @@
  
   
   <script type="text/javascript">	
-  
-  
-      // when the input range changes update value 
-	  d3.select("#nValue").on("input", function() {
-	      console.log(this.value);
-	  });     
+    
+	// create svg element
+	var svg = dimple.newSvg("#chartContainer", 590, 400);
+    // when the input range changes update value 
+	d3.select("#nValue").on("input", function() {
+	  console.log(this.value);
+	});     
 	 
     
-	  // create svg element
-	  var svg = dimple.newSvg("#chartContainer", 590, 400);
+	  
 	
-	  // read in data and transform Day and Level to numbers
-      d3.tsv("data/tide_days.tsv", function (data) {
-	
-	     data.forEach(function(d) {
-              d.Day = +d.Day;
-              d.Level = +d.Level;
-         });
+	// read in data and transform Day and Level to numbers
+    d3.tsv("data/tide_days.tsv", function (data) {	
+	  data.forEach(function(d) {
+        d.Day = +d.Day;
+        d.Level = +d.Level;
+      });
 	
 	  // assign data to value of user form input
 	  var date = nValue.value	
 	
-	  // convert user date input to day of year (0-366)
-	
+	  // convert user date input to day of year (0-366)	
 	  var user_date = new moment(date);
 	  var day_year = user_date.format('DDDD');
 	  console.log(day_year);
@@ -65,7 +63,8 @@
 	  // filter for days >= user input as converted to day of year
 	  // note that +d converts the string to a number 
 	  var days_filter = unique_days.sort()
-		.filter(function(d) {return +d >= day_year});
+		.filter(function(d) {return +d >= day_year
+		});
 	  console.log(days_filter);
 	  
 	  // get n days of year from user input as converted to day of year
@@ -133,9 +132,9 @@
 	  var extended = d3.time.hour.offset(stop_dt_parsed,1);
 	  console.log(extended);	  
 	 
-     // slice data bound by earliest start and 1 hour beyond latest start (complete hike), inclusive
-	 var bounds = data_day.slice(start_index,complete_index + 1);
-	 console.log(bounds);
+      // slice data bound by earliest start and 1 hour beyond latest start (complete hike), inclusive
+	  var bounds = data_day.slice(start_index,complete_index + 1);
+	  console.log(bounds);
 	  
 	  // Create and Position a Chart
       var myChart = new dimple.chart(svg);
@@ -163,10 +162,10 @@
 	  //bubble_startstop.data = data_startstop;
 	  
 	  // plot the earliest start and complete hike bound data as line
-	  var bounds_line = myChart.addSeries("Hike",dimple.plot.line);
+	  var bounds_line = myChart.addSeries("Hike Window",dimple.plot.line);
 	  bounds_line.lineWeight = 5;
 	  bounds_line.lineMarkers = false;
-	  myChart.assignColor = ("Hike","red")
+	  myChart.assignColor = ("Hike Window","red")
 	  
 	  // link the bounds data to the bounds line series
 	  bounds_line.data = bounds;
@@ -181,55 +180,37 @@
 	  // draw vertical lines for start and hike completion values
 	  // using dt objects calculated above
 	  
-	 svg.append("line")
-	 .attr("id", "start_line")
-	 .attr("class","marker_line")
-    .attr("x1", x._scale(start_dt_parsed)) // this line uses calculate dt values
-    .attr("x2", x._scale(start_dt_parsed)) // this line uses calculate dt values
-    .attr("y1", myChart._yPixels())
-    .attr("y2", myChart._yPixels() + myChart._heightPixels())
-    .style("stroke", "red")
-    .style("stroke-dasharray", "3");
+	  svg.append("line")
+	    .attr("id", "start_line")
+	    .attr("class","marker_line")
+        .attr("x1", x._scale(start_dt_parsed)) // this line uses calculate dt values
+        .attr("x2", x._scale(start_dt_parsed)) // this line uses calculate dt values
+        .attr("y1", myChart._yPixels())
+        .attr("y2", myChart._yPixels() + myChart._heightPixels())
+        .style("stroke", "red")
+        .style("stroke-dasharray", "3");
 	
-	svg.append("line")
-	 .attr("id", "stop_line")
-	 .attr("class","marker_line")
-    .attr("x1", x._scale(stop_dt_parsed)) // this line uses calculate dt values
-    .attr("x2", x._scale(stop_dt_parsed)) // this line uses calculate dt values
-    .attr("y1", myChart._yPixels())
-    .attr("y2", myChart._yPixels() + myChart._heightPixels())
-    .style("stroke", "red")
-    .style("stroke-dasharray", "3");
+	  svg.append("line")
+	    .attr("id", "stop_line")
+	    .attr("class","marker_line")
+        .attr("x1", x._scale(stop_dt_parsed)) // this line uses calculate dt values
+        .attr("x2", x._scale(stop_dt_parsed)) // this line uses calculate dt values
+        .attr("y1", myChart._yPixels())
+        .attr("y2", myChart._yPixels() + myChart._heightPixels())
+        .style("stroke", "red")
+        .style("stroke-dasharray", "3");
 	
-	svg.append("line")
-	 .attr("id", "complete_line")
-	 .attr("class","marker_line")
-    .attr("x1", x._scale(extended)) // this line uses calculate dt values
-    .attr("x2", x._scale(extended)) // this line uses calculate dt values
-    .attr("y1", myChart._yPixels())
-    .attr("y2", myChart._yPixels() + myChart._heightPixels())
-    .style("stroke", "red")
-    .style("stroke-dasharray", "3");
+	  svg.append("line")
+	    .attr("id", "complete_line")
+	    .attr("class","marker_line")
+        .attr("x1", x._scale(extended)) // this line uses calculate dt values
+        .attr("x2", x._scale(extended)) // this line uses calculate dt values
+        .attr("y1", myChart._yPixels())
+        .attr("y2", myChart._yPixels() + myChart._heightPixels())
+        .style("stroke", "red")
+        .style("stroke-dasharray", "3");
 	
-	
-	 
-	
-
-	  
-	  
-	  
-	  
-	  
-	    
-	 
-	  
-	  
-	  
- 
-
-      
-
-    });
+	});
   </script>
 </div>
 </html>
