@@ -157,7 +157,11 @@
 	  
 	    // Create and Position a Chart
         var myChart = new dimple.chart(svg);
-        myChart.setBounds(60, 30, 500, 300);
+        myChart.setBounds(
+            left + (col * (width + inMarg)),
+            top + (row * (height + inMarg)),
+            width,
+            height);
         var x = myChart.addTimeAxis("x", "DateTime","%Y-%m-%d %H:%M:%S","%H:%M");
         myChart.addMeasureAxis("y", "Level");
 	  
@@ -228,6 +232,9 @@
           .attr("y2", myChart._yPixels() + myChart._heightPixels())
           .style("stroke", "red")
           .style("stroke-dasharray", "3");
+		  
+		  // Move to the next column
+          col += 1;
 		
 	  }, this);
 	});
