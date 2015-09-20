@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+I'm trying to understand .js data manipulation.
+<div id="chartContainer">
+  <script src="/lib/d3.v3.4.8.js"></script>
+  <script src="/dist/dimple.v2.1.6.js"></script>
+  <script type="text/javascript" src='js/lodash.js'></script>
+  <script type="text/javascript" src='js/analysis.js'></script>
+  
+  
+  <script type="text/javascript">
+    d3.tsv("data/tide_days.tsv", function (data) {
+	
+	var date = "2016-06-06"
+	
+	
+      // Filter for a single Date
+      data_day = dimple.filterData(data, "Date", date);
+	  data_startstop = dimple.filterData(data_day,"start_stop",["start","stop"]);
+	  console.log(data_day[0].Time);
+	  console.log(data_startstop);
+	  
+	  filtered = data_day.filter(function (d) {return d.Time === "15:00:00"});
+	  
+	  console.log(filtered);
+	  
+	  start = data_startstop[0].Time;
+	  
+	  console.log(start);
+	  
+	  stop = data_startstop[1].Time;
+	  
+	  console.log(stop);
+	  
+	  var parser = d3.time.format("%H:%M:%S");
+	  start_time = parser.parse(start);
+	  console.log(start);
+	  
+	  
+	  
+	  
+	  
+	    
+	 
+	  
+	  
+	  
+ 
+
+      
+
+    });
+  </script>
+</div>
+</html>
