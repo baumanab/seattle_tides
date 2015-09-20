@@ -163,10 +163,10 @@
 	  bubble_startstop.data = data_startstop;
 	  
 	  // plot the earliest start and complete hike bound data as line
-	  var bounds_line = myChart.addSeries("hike",dimple.plot.line);
+	  var bounds_line = myChart.addSeries("Hike",dimple.plot.line);
 	  bounds_line.lineWeight = 5;
 	  bounds_line.lineMarkers = false;
-	  myChart.assignColor = ("hike","red")
+	  myChart.assignColor = ("Hike","red")
 	  
 	  // link the bounds data to the bounds line series
 	  bounds_line.data = bounds;
@@ -174,7 +174,7 @@
 	  // create a title
       d3.select('body').append('h2').text('Carkeek to Golden Gardens Hike Time Window for ' + date);
 	  
-	  
+	  myChart.addLegend(200, 10, 360, 20, "right");
       // Draw the chart
       myChart.draw();
 	  
@@ -182,7 +182,8 @@
 	  // using dt objects calculated above
 	  
 	 svg.append("line")
-	 .attr("class", "start_line")
+	 .attr("id", "start_line")
+	 .attr("class","marker_line")
     .attr("x1", x._scale(start_dt_parsed)) // this line uses calculate dt values
     .attr("x2", x._scale(start_dt_parsed)) // this line uses calculate dt values
     .attr("y1", myChart._yPixels())
@@ -191,7 +192,8 @@
     .style("stroke-dasharray", "3");
 	
 	svg.append("line")
-	 .attr("class", "stop_line")
+	 .attr("id", "stop_line")
+	 .attr("class","marker_line")
     .attr("x1", x._scale(stop_dt_parsed)) // this line uses calculate dt values
     .attr("x2", x._scale(stop_dt_parsed)) // this line uses calculate dt values
     .attr("y1", myChart._yPixels())
@@ -200,7 +202,8 @@
     .style("stroke-dasharray", "3");
 	
 	svg.append("line")
-	 .attr("class", "extended_line")
+	 .attr("id", "complete_line")
+	 .attr("class","marker_line")
     .attr("x1", x._scale(extended)) // this line uses calculate dt values
     .attr("x2", x._scale(extended)) // this line uses calculate dt values
     .attr("y1", myChart._yPixels())
