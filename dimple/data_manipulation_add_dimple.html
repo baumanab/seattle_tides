@@ -10,7 +10,9 @@
 	  
 	  #dimple-hike-window {
 	  
+	  
 	  stroke: red !important;
+	  
 	  }
     </style>
 <p>
@@ -111,7 +113,7 @@
                 .style("text-anchor", "middle")
                 .style("font-size", "28px")
                 .style("opacity", 0.2)
-                .text(moment(data_day[0].Date).format('MMM-DD-YYYY'));
+                .text(moment(data_day[0].Date).format('MMM-DD-YYYY')); //extract and format dates 
 				
 				
 	    // Filter single day data for start and hike completion attributes
@@ -218,7 +220,7 @@
 	    // link the bounds data to the bounds line series
 	    bounds_line.data = bounds;
 		
-		myChart.addLegend(-600, 10, 100, 60, "right");
+		myChart.addLegend(-800, 0, 300, 100, "right");
 		
 		
 		
