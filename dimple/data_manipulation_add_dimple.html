@@ -4,10 +4,14 @@
 
 <style>
       circle.dimple-series-1 {
-        fill: orange !important;
-		r: 6px;
+        #fill: orange !important;
+		r: 8px;
       } 
 	  
+	  #dimple-hike-window {
+	  
+	  stroke: red !important;
+	  }
     </style>
 <p>
   <label for="nValue" 
@@ -179,7 +183,10 @@
             width,
             height);
         var x = myChart.addTimeAxis("x", "DateTime","%Y-%m-%d %H:%M:%S","%H:%M");
-        myChart.addMeasureAxis("y", "Level");
+        var y = myChart.addMeasureAxis("y", "Level");
+		
+		y.title = "Tide Level"
+		
 	  
 	    // Draw a label for each hour
 	    x.timePeriod = d3.time.hours;
@@ -195,19 +202,27 @@
 	    lines.data = data_day;
 	  
 	    // Add bubble for latest hike start time
-	    var bubble_startstop = myChart.addSeries(null,dimple.plot.bubble);
+	    var bubble_startstop = myChart.addSeries("Latest_Start",dimple.plot.bubble);
+	
 	  
 	    // Link the start_stop selected data
 	   bubble_startstop.data = data_latest_start;
 	  
 	    // plot the earliest start and complete hike bound data as line
 	    var bounds_line = myChart.addSeries("Hike Window",dimple.plot.line);
-	    bounds_line.lineWeight = 5;
+	    bounds_line.lineWeight = 3;
 	    bounds_line.lineMarkers = false;
-	    myChart.assignColor = ("Hike Window","red")
+	  
+		
 	  
 	    // link the bounds data to the bounds line series
 	    bounds_line.data = bounds;
+		
+		myChart.addLegend(-600, 10, 100, 60, "right");
+		
+		
+		
+		
 	  
 	    // create a title
         //d3.select('body').append('h2').text('Carkeek to Golden Gardens Hike Time Window for ' + date);
@@ -255,7 +270,7 @@
           if (row < 1) {
              x.shapes.selectAll("text").remove();
 			 x.titleShape.remove();
-          }
+          };
 		  
 		  // Move to the next column
           col += 1;
