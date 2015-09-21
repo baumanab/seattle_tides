@@ -8,12 +8,6 @@
 		r: 8px;
       } 
 	  
-	  #dimple-hike-window {
-	  
-	  
-	  stroke: red !important;
-	  
-	  }
     </style>
 <p>
   <label for="nValue" 
@@ -228,6 +222,19 @@
 	  
 	    // create a title
         //d3.select('body').append('h2').text('Carkeek to Golden Gardens Hike Time Window for ' + date);
+		
+		// colorblind palette mostly for my dad who is totally color blind
+		myChart.defaultColors = [
+		new dimple.color("#999999"),
+		new dimple.color("#56B4E9"),
+		new dimple.color("#D55E00"),
+		new dimple.color("#0072B2"),
+		new dimple.color("#")
+        ]; 
+		
+		
+		
+		"#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"
 	  
         // Draw the chart
         myChart.draw();
