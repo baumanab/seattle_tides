@@ -217,12 +217,6 @@
 		myChart.addLegend(-800, 0, 300, 100, "right");
 		
 		
-		
-		
-	  
-	    // create a title
-        //d3.select('body').append('h2').text('Carkeek to Golden Gardens Hike Time Window for ' + date);
-		
 		// colorblind palette mostly for my dad who is totally color blind
 		myChart.defaultColors = [
 		new dimple.color("#999999"),
@@ -280,6 +274,15 @@
              x.shapes.selectAll("text").remove();
 			 x.titleShape.remove();
           };
+		  
+		  // create a title on the first pass
+		  if (row === 0 & col === 0) {
+		  // create a title
+        d3.select('p').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_days + ' Days from ' +
+		moment(nValue.value).format('MMM-DD-YYYY') )
+		.attr("id", "custom-title")
+		.attr("class","custom-title");
+		}
 		  
 		  // Move to the next column
           col += 1;
