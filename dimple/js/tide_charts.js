@@ -1,4 +1,14 @@
 
+
+//event listener called on submit from form
+function handleClick(event){
+                console.log(document.getElementById("myVal").value)
+                draw_charts(document.getElementById("myVal").value)
+                return false;
+            }	
+
+
+
 // ridiculously large function to read in data and render charts
 function draw_charts(val) {
 		// read in data and transform Day and Level to numbers
