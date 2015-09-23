@@ -8,17 +8,10 @@
       } 
 	  
     </style>
-<p>
-  <label for="nValue" 
-         style="display: inline-block; width: 240px; text-align: right">
-         Date = <span id="nValue-value"></span>
-  </label>
-  <input type="date" value="2016-06-06" min = "2015-08-20" min = "2016-08-20" id="nValue">
-</p>
 
 <form name="myform" onSubmit="return handleClick()">
-            <input name="Submit"  type="submit" value="Add to list" >
-            <input type="date" id="myVal" placeholder="Add some text&hellip;">
+            <input name="Submit"  type="submit" value="Submit" >
+            <input type="date" id="myVal" min= "2015-08-21" max="2016-08-19">
         </form>
 
 
@@ -36,6 +29,8 @@
     
 	// create svg element
 	var svg = dimple.newSvg("#chartContainer", 1200, 600);
+	
+	
     // when the input range changes update value 
 	d3.select("#nValue").on("input", function() {
 	  console.log(this.value);

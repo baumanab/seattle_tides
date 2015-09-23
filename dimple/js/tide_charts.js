@@ -11,7 +11,7 @@ function draw_charts(val) {
 		  console.log(typeof data[0].Level);
 		
 		  // assign data to value of user form input
-		  var date = nValue.value	
+		  var date = val	
 		
 		  // convert user date input to day of year (0-366)	
 		  var user_date = new moment(date);
@@ -225,7 +225,7 @@ function draw_charts(val) {
 			  if (row === 0 & col === 0) {
 			  // create a title
 			d3.select('p').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_days + ' Days from ' +
-			moment(nValue.value).format('MMM-DD-YYYY') )
+			moment(val).format('MMM-DD-YYYY') )
 			.attr("id", "custom-title")
 			.attr("class","custom-title");
 			}
