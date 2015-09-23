@@ -2,6 +2,7 @@
 
 //event listener called on submit from form
 function handleClick(event){
+                d3.selectAll("svg > *").remove();
                 console.log(document.getElementById("myVal").value)
                 draw_charts(document.getElementById("myVal").value)
                 return false;
