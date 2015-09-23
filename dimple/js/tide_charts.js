@@ -2,7 +2,7 @@
 
 //event listener called on submit from form
 function handleClick(event){
-                d3.selectAll("svg > *").remove();
+                d3.selectAll("svg > *").remove(); // remove previous chart
                 console.log(document.getElementById("myVal").value)
                 draw_charts(document.getElementById("myVal").value)
                 return false;
@@ -235,8 +235,9 @@ function draw_charts(val) {
 			  // create a title on the first pass
 			  if (row === 0 & col === 0) {
 			  // create a title
+			d3.selectAll("p > *").remove();
 			d3.select('p').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_days + ' Days from ' +
-			moment(val).format('MMM-DD-YYYY') )
+			moment(val).format('MMM-DD-YYYY'))
 			.attr("id", "custom-title")
 			.attr("class","custom-title");
 			}
