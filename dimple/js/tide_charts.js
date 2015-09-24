@@ -22,12 +22,10 @@ function draw_charts(val) {
 		  console.log(typeof data[0].Level);
 		
 		  // assign data to value of user form input
-		  var date = val	
+		  var user_date = moment(val);	
+		  console.log(user_date);
 		
-		  // convert user date input to day of year (0-366)	
-		  var user_date = new moment(date);
-		  var day_year = user_date.format('DDDD');
-		  console.log(day_year);
+		 
 		  
 		  // Set the bounds for the charts
 		  var row = 0,
@@ -39,30 +37,32 @@ function draw_charts(val) {
 			  height = 240,
 			  totalWidth = parseFloat(svg.attr("width"));
 		
-		  // get nearest n days of year
+		  // get nearest viable date to user input date
 		  
-		  // extract unique days into array, note that dimple changes
-		  // the values back to strings
-		  var unique_days = dimple.getUniqueValues(data, "Day");
-		  console.log(unique_days);
-		  
-		  // filter for days >= user input as converted to day of year
-		  // note that +d converts the string to a number 
-		  var days_filter = unique_days.sort()
-			.filter(function(d) {return +d >= day_year
+		  // extract unique date strings into array
+		  var unique_dates = dimple.getUniqueValues(data, "Date")
+		    .map(function(d) {return moment(d,"YYYY-MM-DD")
 			});
-		  console.log(days_filter);
+		  console.log(unique_dates);
 		  
-		  // get n days of year from user input as converted to day of year
 		  
-		  n_days = 4;
+		  // filter for dates >= user date submission
+		  var dates_filter = unique_dates.filter(function(d) {return moment(d,"YYYY-MM-DD") >= user_date
+			                 });
+		  console.log(typeof dates_filter[0]);
+		  console.log(dates_filter.slice(0,10));
 		  
-		  var the_days = days_filter.slice(0,n_days);
-		  console.log(the_days);
+		  
+		  // get n dates of year from user input as converted to day of year
+		  
+		  n_dates = 4;
+		  
+		  var the_dates = dates_filter.slice(0,n_dates);
+		  console.log(the_dates);
 		  
 		  
 		  // Draw a chart for each of the n dates
-		  the_days.forEach(function (day) {
+		  the_dates.forEach(function (date) {
 		  
 			// Wrap to the row above
 				if (left + ((col + 1) * (width + inMarg)) > totalWidth) {
@@ -72,26 +72,27 @@ function draw_charts(val) {
 		  
 		
 			// Filter for a single day of year 
-			data_day = dimple.filterData(data, "Day", day);
+			data_date = dimple.filterData(data, "Date", date._i);
+			console.log(data_date[0]);
 			
 			// Use d3 to draw a text label for the day
 			  svg
 				.append("text")
 					.attr("x", left + (col * (width + inMarg)) + (width / 1.8))
-					.attr("y", top + (row * (height + inMarg)) + (height / 6) + n_days)
+					.attr("y", top + (row * (height + inMarg)) + (height / 6) + n_dates)
 					.style("font-family", "sans-serif")
 					.style("text-anchor", "middle")
 					.style("font-size", "28px")
 					.style("opacity", 0.2)
-					.text(moment(data_day[0].Date).format('MMM-DD-YYYY')); //extract and format dates 
+					.text(moment(data_date[0].Date).format('MMM-DD-YYYY')); //extract and format dates 
 					
 					
 			// Filter single day data for start and hike completion attributes
-			data_startstop = dimple.filterData(data_day,"start_stop",["earliest_start","latest_start","complete_hike"]);
-			console.log(data_day[0].Time);
+			data_startstop = dimple.filterData(data_date,"start_stop",["earliest_start","latest_start","complete_hike"]);
+			console.log(data_date[0].Time);
 			console.log(data_startstop);
 
-			data_latest_start = dimple.filterData(data_day,"start_stop","latest_start");
+			data_latest_start = dimple.filterData(data_date,"start_stop","latest_start");
 			console.log(data_latest_start);		
 		  
 		  
@@ -101,21 +102,21 @@ function draw_charts(val) {
 			start_dt = data_startstop[0].DateTime;	  
 			console.log(start_dt);
 			// get the index
-			var start_index = data_day.map(function(d) {return d.DateTime})
+			var start_index = data_date.map(function(d) {return d.DateTime})
 			  .indexOf(start_dt);
 			console.log(start_index);
 		  
 			stop_dt = data_startstop[1].DateTime;	  
 			console.log(stop_dt);	
 			// get the index
-			var stop_index = data_day.map(function(d) {return d.DateTime})
+			var stop_index = data_date.map(function(d) {return d.DateTime})
 			  .indexOf(stop_dt);
 			console.log(stop_index);
 
 			complete_dt = data_startstop[2].DateTime;
 			console.log(complete_dt);
 			// get the index
-			var complete_index = data_day.map(function(d) {return d.DateTime})
+			var complete_index = data_date.map(function(d) {return d.DateTime})
 			  .indexOf(complete_dt);
 			console.log(complete_index);	  
 		  
@@ -134,7 +135,7 @@ function draw_charts(val) {
 			console.log(extended);	  
 		 
 			// slice data bound by earliest start and 1 hour beyond latest start (complete hike), inclusive
-			var bounds = data_day.slice(start_index,complete_index + 1);
+			var bounds = data_date.slice(start_index,complete_index + 1);
 			console.log(bounds);
 		  
 			// Create and Position a Chart
@@ -161,7 +162,7 @@ function draw_charts(val) {
 			lines.lineMarkers = false;	  
 		  
 			// Link the date selected data
-			lines.data = data_day;
+			lines.data = data_date;
 		  
 			// Add bubble for latest hike start time
 			var bubble_startstop = myChart.addSeries("Latest_Start",dimple.plot.bubble);
@@ -236,7 +237,7 @@ function draw_charts(val) {
 			  if (row === 0 & col === 0) {
 			  // create a title
 			d3.selectAll("p > *").remove();
-			d3.select('p').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_days + ' Days from ' +
+			d3.select('p').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_dates + ' Days from ' +
 			moment(val).format('MMM-DD-YYYY'))
 			.attr("id", "custom-title")
 			.attr("class","custom-title");
