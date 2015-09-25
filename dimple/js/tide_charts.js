@@ -81,12 +81,12 @@ function draw_charts(val) {
 			// Use d3 to draw a text label for the date
 			  svg
 				.append("text")
-					.attr("x", left + (col * (width + inMarg)) + (width / 1.8))
+					.attr("x", left + (col * (width + inMarg)) + (width / 2.1))
 					.attr("y", top + (row * (height + inMarg)) + (height / 6) + n_dates)
 					.style("font-family", "sans-serif")
 					.style("text-anchor", "middle")
 					.style("font-size", "28px")
-					.style("opacity", 0.2)
+					.style("opacity", 0.3)
 					.text(moment(data_date[0].Date).format('MMM-DD-YYYY')); //extract and format dates 
 					
 					
