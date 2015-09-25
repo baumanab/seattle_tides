@@ -1,0 +1,25 @@
+
+circle.dimple-series-1 {
+r: 8px;
+} 
+
+.dimple-custom-axis-title {
+font-size: 18px !important;
+}
+
+.dimple-custom-legend-label {
+font-size: 15px !important;
+
+}
+
+.dimple-custom-legend-key {
+
+height: 18px;
+width: 17px; 
+}
+
+.dimple-custom-legend {
+padding: 50px;
+marging: auto;
+}
+    
