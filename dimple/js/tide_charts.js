@@ -152,7 +152,9 @@ function draw_charts(val) {
 			var x = myChart.addTimeAxis("x", "DateTime","%Y-%m-%d %H:%M:%S","%H:%M");
 			var y = myChart.addMeasureAxis("y", "Level");
 			
-			y.title = "Tide Level"
+			y.title = "Tide Level";
+			x.title = "Time";
+			
 			
 		  
 			// Draw a label for each hour
@@ -233,6 +235,8 @@ function draw_charts(val) {
 				 x.titleShape.remove();
 			  };
 			  
+			  
+			  
 			  // create a title on the first pass
 			  if (row === 0 & col === 0) {
 			  // create a title
@@ -245,6 +249,12 @@ function draw_charts(val) {
 			  
 			  // Move to the next column
 			  col += 1;
+			  
+			  // If this is not in the first column remove the y text
+			  if (col > 1) {
+			     y.titleShape.remove();
+				 y.shapes.selectAll("text").remove();
+			  };
 
 			  
 			  
