@@ -187,7 +187,7 @@ function draw_charts(val) {
 			// link the bounds data to the bounds line series
 			bounds_line.data = bounds;
 			
-			myChart.addLegend(-800, 0, 300, 100, "right");
+			myChart.addLegend(-850, 4, 370, 200, "left");
 			
 			
 			// colorblind palette mostly for my dad who is totally color blind
