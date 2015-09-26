@@ -8,41 +8,53 @@
 </head>
 
 <body>
-	
-<p id= "chart_title">	<p>
 
-<form id= "submit_form" name="myform" onSubmit="return handleClick()">
+  <div id= "intro">
+ The explanatory data visualization below is in fulfillment of the requirements for Udacity's Data Analyst Nanodegree Project 6: "Make an Effective Data Visualization." 
+ The data visualization is designed to help the user determine when to make the ~2 mile hike between two Seattle Parks, Carkeek and Golden Gardens, 
+ via beach exposed at low tide.  A chart is displayed for each of the next four viable days, from the selected day (initial visualization is the current day).
+The tide data in feet as a function of time (local) is represented by the solid line.  The viable hiking window is bracketed by two vertical lines and 
+highlighted, with the circle representing the latest start time for a viable hike.  What are the criteria for a viable hike? I'm so glad you asked.  
+They are 1 hour of daylight and 1 hour of exposed beach (tide level NGT 2 feet).
+  
+  </div>
+
+  <p id= "chart_title">	<p>
+
+  <form id= "submit_form" name="myform" onSubmit="return handleClick()">
             <input name="Submit"  type="submit" value="Submit" >
             <input type="date" id="myVal" min= "2015-08-21" max="2016-08-19">
         </form>
 
 
-<div id="chartContainer">
-  <script src="/lib/d3.v3.4.8.js"></script>
-  <script src="/dist/dimple.v2.1.6.js"></script>
-  <script type="text/javascript" src='js/lodash.js'></script>
-  <script type="text/javascript" src='js/moment.js'></script>
-  <script type="text/javascript" src='js/moment-with-locales.js'></script>
-  <script type="text/javascript" src='js/tide_charts.js'></script>
+  <div id="chartContainer">
+    <script src="/lib/d3.v3.4.8.js"></script>
+    <script src="/dist/dimple.v2.1.6.js"></script>
+    <script type="text/javascript" src='js/lodash.js'></script>
+    <script type="text/javascript" src='js/moment.js'></script>
+    <script type="text/javascript" src='js/moment-with-locales.js'></script>
+    <script type="text/javascript" src='js/tide_charts.js'></script>
   
  
   
-  <script type="text/javascript">	
+    <script type="text/javascript">	
     
-	// create svg element
-	var svg = dimple.newSvg("#chartContainer", 1200, 600);
+	  // create svg element
+	  var svg = dimple.newSvg("#chartContainer", 1200, 600);
 	
-	now = moment();
-	formatted_now = now.format("YYYY-MM-DD")
+	  now = moment();
+	  formatted_now = now.format("YYYY-MM-DD")
 
-
-
-	 
 	
 	
+	  draw_charts(val = formatted_now);
+    </script>
+	<p id="figure_text">
+	The solid line represents the tide level in feet at Carkeek park as function of time (local).  The dashed vertical lines represent the viable hike window (daylight present and 1 hour of tide level NGT 2 feet).  
+	The circle indicates the latest start time. 
+</p>	
 	
-	draw_charts(val = formatted_now);
-  </script>
 </div>
+
 <body>
 </html>
