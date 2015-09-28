@@ -1,3 +1,7 @@
+/*
+Start chart styling 
+********************************************
+*/
 
 circle.dimple-series-1 {
 r: 8px;
@@ -20,23 +24,84 @@ width: 17px;
 
 .dimple-custom-legend {
 padding: 50px;
-marging: auto;
+margin: auto;
 }
 
 #chart_title {
 
 font-family: times, Times New Roman, times-roman, georgia, serif;
-font-size: 20px;
-line-height: 16px;
+font-size: 16px;
+line-height: 30px;
 letter-spacing: -1px;
-color: #444;
-margin: 0 0 0 0;
-padding: 0 0 0 0;
+color: #555;
+margin: .5;
+padding: .25em;
 font-weight: 100;
+text-align: center;
 }
 
-body {
-background-color: #FCFDFD;
+/*
+End chart styling 
+********************************************
+*/
+
+
+/*
+Start Page styling 
+********************************************
+*/
+
+
+
+form {
+margin: 1.5em;
 }
+
+
+.info {
+font-size: 1em;
+line-height: 1.25em;
+margin: 0.625em;
+text-align: left;
+font-family: 'Inder', sans-serif; 
+margin-bottom: 1.5em; 
+margin-top: .25em;
+color: #666;
+}
+
+
+h3 {
+margin: 1.0em; 
+}
+
+/*a { color: #c8c8c8; text-decoration: underline; }
+
+
+a:hover { color: #1c1c1c; text-decoration: underline; }
+
+*/
+
+div#main_figure {
+    border-radius: 25px;
+    border: 2px solid #455;
+	margin: .5em;
+	background-color: #FCFDFD;
+}
+
+p#figure_text.info {
+color: #555;
+font-weight: bold;
+}
+
+
+
+body {
+background-color: #FEFEFE;
+}
+
+/*
+End Page styling 
+********************************************
+*/
 
     

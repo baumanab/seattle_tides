@@ -241,7 +241,7 @@ function draw_charts(val) {
 			  if (row === 0 & col === 0) {
 			  // create a title
 			d3.selectAll("p > *").remove(); //remove existing title
-			d3.select('p').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_dates + ' Days from ' +
+			d3.select('p#chart_title').append('h2').text('Carkeek to Golden Gardens Hike Time Window Next Viable ' + n_dates + ' Days from ' +
 			moment(val).format('MMM-DD-YYYY'))
 			.attr("id", "custom-title")
 			.attr("class","custom-title");
