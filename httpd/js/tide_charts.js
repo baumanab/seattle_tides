@@ -152,7 +152,7 @@ function draw_charts(val) {
 			var x = myChart.addTimeAxis("x", "DateTime","%Y-%m-%d %H:%M:%S","%H:%M");
 			var y = myChart.addMeasureAxis("y", "Level");
 			
-			y.title = "Tide Level";
+			y.title = "Tide Level (feet)";
 			x.title = "Time";
 			
 			
