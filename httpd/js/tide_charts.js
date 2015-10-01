@@ -163,7 +163,7 @@ function draw_charts(val) {
 		  
 
 			// Add a thick line without markers
-			var lines = myChart.addSeries(null, dimple.plot.line); 
+			var lines = myChart.addSeries("Tide", dimple.plot.line); 
 			lines.lineWeight = 3;
 			lines.lineMarkers = false;	  
 		  
