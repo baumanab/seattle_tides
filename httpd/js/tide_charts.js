@@ -231,7 +231,7 @@ function draw_charts(val) {
 		  
 			  // If this is not in the last row remove the x text
 			  if (row < 1) {
-				 x.shapes.selectAll("text").remove();
+				 //x.shapes.selectAll("text").remove();
 				 x.titleShape.remove();
 			  };
 			  
