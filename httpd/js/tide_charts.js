@@ -170,7 +170,7 @@ function draw_charts(val) {
 			// Link the date selected data
 			lines.data = data_date;
 		  
-			// Add bubble for latest hike start time
+			// Add bubble for latest hike start timel
 			var bubble_startstop = myChart.addSeries("Latest_Start",dimple.plot.bubble);
 		
 		  
