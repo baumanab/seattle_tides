@@ -33,11 +33,15 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 ### Line Chart
 
 
-| gg |        gg |
+| visual encoding | variable |
 -------------------|-----------------|
-| gg| gg |
-| gg | gg |
-| gg  | gg |
+| distance x | hour of day |
+| distance y | tide level |
+| shape and color | latest start |
+| shape and color? | viable hiking window |
+| shape anc color | sunrise |
+| shape and color | sunset |
+
 
 
 
@@ -65,4 +69,28 @@ gg:
 
 ## Feedback
 
+6 reviewers in total gave feedack prior to submission.  Aggregated comments and associated actions are tabulated below.
+
+6 reviewers
+
+| comment | # reviewers | action | notes
+-------------------|-----------------|
+| Add units to x axis | 4 | units added | rookie mistake |
+| Add time values to first row | 4 | time values added | previous state was just tick marks in first row |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+| gg | gg | gg | gg |
+
+
+One reviewer was selected, in part, because he is completely color blind.  I solicited not only his general review, but also inquired specifically if the encoding I used to draw focus (pre-attentive processing) to the hiking window, as well as other color choices were discernable to him.  He indicated that the colors and shades selected provided sufficient contrast for him to recognize the differences..
 
