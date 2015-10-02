@@ -46,7 +46,13 @@ This informed my design in the following ways:
 * The number of days is impractical to view all days in a single visualization
 * While the data could be viewed by week, those with non-contiguous days will contain gaps or show days with no window
 
-# show a few EDA plots from notebook
+![EDA 1: 1 viable day](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/single_day.png)
+
+![EDA 2: 2 contiguous viable days](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/two_contiguous_days.png)
+
+![EDA 3: 2 non-contiguous viable days](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/two_noncontiguous_days.png)
+
+
 
 This along with thinking about my own needs, as a user of this visualziation led me to design a visualiation with shows the next 4 viable days in a trellis, with the hiking window emphasized.  An interactive feature allows the user to input a date or select from a calendar drop down (browser dependent), to see the next 4 viable days from the selection.
 
