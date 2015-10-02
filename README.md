@@ -17,7 +17,7 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 ## Design
 
 ### Sketches 
-![Sketch 1](https://drive.google.com/open?id=0B6-_839umHeRVWQ3TDBkMHluQkU)
+![Sketch 1](https://drive.google.com/open?id=0B6-_839umHeRVWQ3TDBkMHluQkU/view)
 
 ![Sketch 2](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
 
