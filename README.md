@@ -46,11 +46,11 @@ This informed my design in the following ways:
 * The number of days is impractical to view all days in a single visualization
 * While the data could be viewed by week, those with non-contiguous days will contain gaps or show days with no window
 
-![EDA 1: 1 viable day](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/single_day.png)
+![EDA 1: 1 viable day](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/single_day_EDA.png)
 
-![EDA 2: 2 contiguous viable days](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/two_contiguous_days.png)
+![EDA 2: 2 contiguous viable days](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/two_contiguous_days_EDA.png)
 
-![EDA 3: 2 non-contiguous viable days](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/two_noncontiguous_days.png)
+![EDA 3: 2 non-contiguous viable days](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/two_noncontiguous_days_EDA.png)
 
 
 
