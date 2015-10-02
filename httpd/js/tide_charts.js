@@ -207,6 +207,8 @@ function draw_charts(val) {
 		     // chart is drawn, now we have access to chart shape objects
 			// draw vertical lines for start and hike completion values
 			// using dt objects calculated above
+			
+			
 		  
 			svg.append("line")
 			  .attr("id", "start_line")
