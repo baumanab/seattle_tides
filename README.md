@@ -17,11 +17,16 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 ## Design
 
 ### Sketches 
+
+These sketches and markups are of amazing quality had they been created by a 3 year old, they are less impressive in consideration of my adulthood.  In any case, the first three sketches represent my initial thoughts prior to really digging into the data and visualization concept.  I simply wanted to find a way to help would-be hikers to know when a good general set of days would be to attempt the hike.  I though about using an index imposed on a calendar or as function of time (aggregted by month).  This is fairly primitive so I consulted a Udacity Coach for guidance.
 ![Sketch 1](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_index.png)
 
-![Sketch 2](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_tide.png)
+![Sketch 2](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/index.png)
 
-![Sketch 3](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/index.png)
+![Sketch 3](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_tide.png)
+
+My discusson with a Udacity Coach was very helpful.  We talked a little about ideas, concepts, and how best a visualization might serve the user.  Several ideas were put forward to be considred as the source data was explored and transformed (only cursory data analysis had been done at this point).  The next two sketches re
+
 
 ![Sketch 4](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/tide_time.png)
 
@@ -33,14 +38,13 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 ### Line Chart
 
 
-| visual encoding | variable |
+| visual encoding | variable/series |
 -------------------|-----------------|
 | distance x | hour of day |
 | distance y | tide level |
 | shape and color | latest start |
 | shape and color? | viable hiking window |
-| shape anc color | sunrise |
-| shape and color | sunset |
+| shape and color | sunrise/sunset time |
 
 
 
@@ -69,13 +73,13 @@ gg:
 
 ## Feedback
 
-9 reviewers were directed to my live project site (seattalytics.com) and invited to give feedback.  6 reviewers responsed prior to project submission, 2 residing in the Great Lakes Region, 2 in OR, and 2 in the Seattle area.  The comments are generally positive with all reviewers finding the visualizatoin a useful planning tool for determining when to embark on the low tide hike.  All reviewers noticed that the viable hiking window span varied by time of year or season.  What was not apparent to reveiwers was how the interplay between tide level and sunrise/sunset times (light dependent visibility) affected this window.  
-While each reviewer enjoyed the interactive features (tooltip and date submission at the time of review), there were some browser specific difficulties with date entry in the HTML date form as well as some requests to increase clarity and to better understad the hiking window in the context of sunrise/sunset.  
-One reviewer was selected, in part, because he is completely color blind.  I solicited not only his general review, but also inquired specifically if the encoding I used to draw focus (pre-attentive processing) to the hiking window, as well as other color choices were discernable to him.  He indicated that the colors and shades selected provided sufficient contrast for him to recognize the differences.  This same reviewer also pointed out that the visualization could not only serve hikers, but may also be useful for fisherman and gatherers (shells, clams, geoduck).  This particular comment is very insightful and highlights the importance of seeking diverse perspectives for data products.  Comments aggregated from all reviewers and associated actions are tabulated below.
+9 reviewers were directed to my live project site (seattalytics.com) and invited to give feedback.  6 reviewers responsed prior to project submission, 2 residing in the Great Lakes Region, 2 in OR, and 2 in the Seattle area.  The comments are generally positive with all reviewers finding the visualizatoin a useful planning tool for determining when to embark on the low tide hike.  All reviewers noticed that the viable hiking window span varied by time of year or season.  What was not apparent to reveiwers was the impact sunrise and sunset times (light dependent visibility) have on the window.  While each reviewer enjoyed the interactive features (tooltip and date submission at the time of review), there were some browser specific difficulties with date entry.  
+
+One reviewer was selected, in part, because he is completely color blind.  I solicited not only his general review, but also inquired specifically if the encoding I used to draw focus (pre-attentive processing) to the hiking window, as well as other color choices were discernable to him.  He indicated that the colors and shades selected provided sufficient contrast for him to recognize the differences.  This same reviewer also pointed out that the visualization could not only serve hikers, but may also be useful for fisherman, gatherers (shells, clams, geoduck), and tidel pool enthusiasts.  This particular comment is very insightful and highlights the importance of seeking diverse perspectives for data product feedback.  Comments aggregated from all reviewers and associated actions are tabulated below.
 
 Total Reviewers: 6
 
-| comment/observation | # reviewers | action | notes
+| Comment/Observation | # Reviewers | Action | Notes
 ----------|---------|-------|----------|
 | Add units to x axis | 4 | units added | my rookie mistake |
 | Add time values to first row | 4 | time values added | previous state: tick marks only for first row |
@@ -85,10 +89,12 @@ Total Reviewers: 6
 | Add graphics\+, icons++, background colors+++ | 3 | see footnote and discussion |  |
 | indicate water level threshold | 2 | add toggle feature for horizontal line @ 2' | none |
 | indicate sunrise and sunset | 3 | add toggle feature for sunrise and sunset markers | none |
-| Use more desriptive label than "All" for main series | 2 | Changed to Tide | none |
+| Use more descriptive label than "All" for main series | 2 | Changed to Tide | none |
 
 \+ graphics to indicate: low tide, high tide
+
 ++ icons to indicate: latest start (i.e. crosswalk signal), sunrise/sunset (i.e. sun/moon icons)
+
 +++ background colors to indicate: Sunrise/Sunset or amount of light
 
-Certain changes were implemented immediately (units, placeholder for date format, x-axis values, tide data label), others required further consideration.  After contemplation on how best to resolve icon requests as well as informatoin about sunrise/sunset, I decided to bucket the requests.  The first bucket are those requests which I choose not to take action on.  That is adding icons or background colors.  Fulfilling these feature requests would clutter the visualization and jeapordize the experience of color blind users.  The next bucket is somehow indicating the water level point of no return to make it really obvious that "here thar be dragons.".  The final bucket is helping users understand the role amount of light plays in the hike window using sunrise/sunset as a surrogate.  The requests are reasonable and I think would be useful, but I had reservations about simply adding indicators to the visualization as it may cause clutter and draw focus away from the hike window.  I decided to have the best of both worlds by adding buttons to toggle indicators on and off (? describe indicators here before final).
+Certain changes were implemented immediately (units, placeholder for date format, x-axis values, tide data label), others required further consideration.  After contemplation on how best to resolve icon requests as well as information about sunrise/sunset, I decided to bucket the requests.  The first bucket are those requests which I chose not take action on, but did address with reviewers. That is adding icons or background colors.  Fulfilling these feature requests would clutter the visualization and jeapordize the experience of color blind users, without adding significant value the visualization.  The next bucket is somehow indicating the water level point of no return to make it really obvious that "here thar be dragons.".  The final bucket is helping users understand the role amount of light plays in the hike window using sunrise/sunset as a surrogate.  The last two request buckets are reasonable and would add value, but I had reservations about simply adding indicators to the visualization as it may cause clutter and draw focus away from the hike window.  I decided to have the best of both worlds by adding buttons to toggle indicators on/off (? describe indicators here before final).
