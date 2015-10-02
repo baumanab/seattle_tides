@@ -69,37 +69,26 @@ gg:
 
 ## Feedback
 
-9 reviwers were directed to the following site (seattalytics.com) and invited to give feedback.  6 reviewers responsed prior to project submission.  The comments are generally positive with all reviewers find the visualizatoin a useful planning tool for determining when to embark on the low tide hike.  All reviewers noticed that the viable hiking window span varied by time of year.  What was not apparent to reviwers was how the interplay between tide level and sunrise/sunset times (light dependent visibility) affected this window.  
-While each reviwer enjoyed the interactive features, there were some browser specific difficulties with date entry in the HTML date form as well as some requests to increase clarity and to better understad the hiking window in the context off sunrise/sunset.  
-One reviewer was selected, in part, because he is completely color blind.  I solicited not only his general review, but also inquired specifically if the encoding I used to draw focus (pre-attentive processing) to the hiking window, as well as other color choices were discernable to him.  He indicated that the colors and shades selected provided sufficient contrast for him to recognize the differences.  This same reviewer also pointed out that the visualization could not only server hikers, but also be useful for fisherman and gatherers (shells, clams, geoduck). Comments aggregated from all reviewers and associated actions are tabulated below.
+9 reviewers were directed to my live project site (seattalytics.com) and invited to give feedback.  6 reviewers responsed prior to project submission, 2 residing in the Great Lakes Region, 2 in OR, and 2 in the Seattle area.  The comments are generally positive with all reviewers finding the visualizatoin a useful planning tool for determining when to embark on the low tide hike.  All reviewers noticed that the viable hiking window span varied by time of year or season.  What was not apparent to reveiwers was how the interplay between tide level and sunrise/sunset times (light dependent visibility) affected this window.  
+While each reviewer enjoyed the interactive features (tooltip and date submission at the time of review), there were some browser specific difficulties with date entry in the HTML date form as well as some requests to increase clarity and to better understad the hiking window in the context of sunrise/sunset.  
+One reviewer was selected, in part, because he is completely color blind.  I solicited not only his general review, but also inquired specifically if the encoding I used to draw focus (pre-attentive processing) to the hiking window, as well as other color choices were discernable to him.  He indicated that the colors and shades selected provided sufficient contrast for him to recognize the differences.  This same reviewer also pointed out that the visualization could not only serve hikers, but may also be useful for fisherman and gatherers (shells, clams, geoduck).  This particular comment is very insightful and highlights the importance of seeking diverse perspectives for data products.  Comments aggregated from all reviewers and associated actions are tabulated below.
 
-6 reviewers
+Total Reviewers: 6
 
 | comment/observation | # reviewers | action | notes
 ----------|---------|-------|----------|
 | Add units to x axis | 4 | units added | my rookie mistake |
-| Add time values to first row | 4 | time values added | previous state was just tick marks in first row |
-| Difficulty determing format for date entry | 3 | added placeholder for date | IE & Firefox limitation |
-| Add horizontal bar to determine 2 feet level | 1 | TBD| none |
+| Add time values to first row | 4 | time values added | previous state: tick marks only for first row |
+| Difficulty determing format for date entry | 3 | added html placeholder for date format | IE & Firefox limitation |
 | Tooltip took a few minutes to understand  | 2 | none planned | none |
-| Change time format from 24 hour clock to period | 1 | none | difficulat to see AM/PM |
-| Add graphics*, icons**, background colors*** | 3 | see footnote and discussion |  |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
-| gg | gg | gg | gg |
+| Change time format from 24 hour clock to period | 1 | none | difficult to see AM/PM |
+| Add graphics+, icons++, background colors+++ | 3 | see footnote and discussion |  |
+| indicate water level threshold | 2 | add toggle feature for horizontal line @ 2' | none |
+| indicate sunrise and sunset | 3 | add toggle feature for sunrise and sunset markers | none |
+| Use more desriptive label than "All" for main series | 2 | Changed to Tide | none |
 
-* graphics to indicate:
-** icons to indicate:
-*** background colors to indicate:
++ graphics to indicate: low tide, high tide
+++ icons to indicate: latest start (i.e. crosswalk signal), sunrise/sunset (i.e. sun/moon icons)
++++ background colors to indicate: Sunrise/Sunset or amount of light
 
-
-discuss how you resolved graphics and icons requests
-
-
-..
-
+Certain changes were implemented immediately (units, placeholder for date format, x-axis values, tide data label), others required further consideration.  After contemplation on how best to resolve icon requests as well as informatoin about sunrise/sunset, I decided to bucket the requests.  The first bucket are those requests which I choose not to take action on.  That is adding icons or background colors.  Fulfilling these feature requests would clutter the visualization and jeapordize the experience of color blind users.  The next bucket is somehow indicating the water level point of no return to make it really obvious that "here thar be dragons.".  The final bucket is helping users understand the role amount of light plays in the hike window using sunrise/sunset as a surrogate.  The requests are reasonable and I think would be useful, but I had reservations about simply adding indicators to the visualization as it may cause clutter and draw focus away from the hike window.  I decided to have the best of both worlds by adding buttons to toggle indicators on and off (? describe indicators here before final).
