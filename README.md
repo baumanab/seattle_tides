@@ -74,7 +74,7 @@ gg:
 6 reviewers
 
 | comment | # reviewers | action | notes
--------------------|-----------------|
+----------|---------|-------|----------|
 | Add units to x axis | 4 | units added | rookie mistake |
 | Add time values to first row | 4 | time values added | previous state was just tick marks in first row |
 | gg | gg | gg | gg |
