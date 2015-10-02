@@ -17,15 +17,15 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 ## Design
 
 ### Sketches 
-![Sketch 1](https://drive.google.com/open?id=0B6-_839umHeRVWQ3TDBkMHluQkU/view)
+![Sketch 1](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_index.png)
 
-![Sketch 2](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+![Sketch 2](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_tide.png)
 
-![Sketch 3](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+![Sketch 3](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/index.png)
 
-![Sketch 4](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+![Sketch 4](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/tide_time.png)
 
-![Sketch 5](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+![Sketch 5](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/tide_week.png)
 
 
 
