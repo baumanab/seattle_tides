@@ -7,8 +7,27 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
  You can learn more about this hike, here: [Seattle Metro Bus Hiking](https://sites.google.com/site/seattlemetrobushiking/main-page/in-city-hikes/carkeek-park-and-beach-walk-to-ballard).
 
 
+ ## The Data
+
+ Read more about the data that generated this visualization here: [ReadMe](All fields were exported to the .tsv as strings)
+ The source data acqusition and subsequent wrangling is documented here: [Data Wrangling Notebook](https://github.com/baumanab/seattle_tides/blob/master/sandbox.ipynb)
+
+
 
 ## Design
+
+### Sketches 
+![Sketch 1](https://drive.google.com/open?id=0B6-_839umHeRVWQ3TDBkMHluQkU)
+
+![Sketch 2](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+
+![Sketch 3](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+
+![Sketch 4](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+
+![Sketch 5](https://drive.google.com/open?id=0B6-_839umHeRSlNXbjdoMVNfWVE)
+
+
 
 
 ### Line Chart
