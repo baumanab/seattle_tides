@@ -7,7 +7,7 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
  You can learn more about this hike, here: [Seattle Metro Bus Hiking](https://sites.google.com/site/seattlemetrobushiking/main-page/in-city-hikes/carkeek-park-and-beach-walk-to-ballard).
 
 
- ## The Data
+ ### The Data
 
  Read more about the data that generated this visualization here: [ReadMe and Data](https://github.com/baumanab/seattle_tides/tree/master/data)
  The source data acqusition and subsequent wrangling is documented here: [Data Wrangling Notebook](https://github.com/baumanab/seattle_tides/blob/master/sandbox.ipynb)
@@ -18,19 +18,41 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 
 ### Sketches 
 
-These sketches and markups are of amazing quality had they been created by a 3 year old, they are less impressive in consideration of my adulthood.  In any case, the first three sketches represent my initial thoughts prior to really digging into the data and visualization concept.  I simply wanted to find a way to help would-be hikers to know when a good general set of days would be to attempt the hike.  I though about using an index imposed on a calendar or as function of time (aggregted by month).  This is fairly primitive so I consulted a Udacity Coach for guidance.
+These sketches and markups are of amazing quality had they been created by a 3 year old, they are less impressive in consideration of my adulthood.  In any case, the first three sketches represent my initial thoughts prior to really digging into the data and visualization concept.  I simply wanted to find a way to help would-be hikers to know when a good general set of days would be to attempt the hike.  I thought about using an index imposed on a calendar or as function of time (aggregted by month).  This is fairly primitive so I consulted a Udacity Coach for guidance.
+
 ![Sketch 1](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_index.png)
 
 ![Sketch 2](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/index.png)
 
 ![Sketch 3](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/cal_tide.png)
 
-My discusson with a Udacity Coach was very helpful.  We talked a little about ideas, concepts, and how best a visualization might serve the user.  Several ideas were put forward to be considred as the source data was explored and transformed (only cursory data analysis had been done at this point).  The next two sketches re
+My discusson with a Udacity Coach was very helpful.  We talked about ideas, concepts, and how best a visualization might serve the user.  Several ideas were put forward to be considred as the source data was explored and transformed (only cursory data analysis had been done at this point).  The next two sketches represent the two main concepts we arrived at.  We both agreed that a useful visualization would be to plot the tide as a function of time, creating a window of viable hiking, based on tide and light/dark status.  We decided that the continuity of the plot should be based on the data, that is whether to show the user a single day, a group of days, a week, a month, or even a seasonal period.  We also discussed adding an interactive elements where the next time period of visualization would be shown to the user through some mode of interaction (i.e. a button).
 
 
 ![Sketch 4](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/tide_time.png)
 
 ![Sketch 5](https://github.com/baumanab/seattle_tides/blob/master/httpd/img/tide_week.png)
+
+
+Upon acquiring and wrangling the data, I performed basic Exploratory Data Analysis (EDA) and found the for the time period I examined (Late August 2015 --> Late August 2016) the data broke down as follows:
+
+* 155 viable days
+* 9 months contained viable days
+* 35 weeks contained viable days
+* Many viable days are not contiguous
+
+This informed my design in the following ways:
+
+* The number of days is impractical to view all days in a single visualization
+* While the data could be viewed by week, those with non-contiguous days will contain gaps or show days with no window
+
+# show a few EDA plots from notebook
+
+This along with thinking about my own needs, as a user of this visualziation led me to design a visualiation with shows the next 4 viable days in a trellis, with the hiking window emphasized.  An interactive feature allows the user to input a date or select from a calendar drop down (browser dependent), to see the next 4 viable days from the selection.
+
+Feedback from reviwers, as described in the Feedback section led to the addition of a 3rd and 4th interactive feature, a button that draws a horizontal line indicating the tide level at which no hike attempt should be made, and a button shows sunset/sunshine to help inform the user how the hike window limits where chosen.
+
+
 
 
 
@@ -98,3 +120,5 @@ Total Reviewers: 6
 +++ background colors to indicate: Sunrise/Sunset or amount of light
 
 Certain changes were implemented immediately (units, placeholder for date format, x-axis values, tide data label), others required further consideration.  After contemplation on how best to resolve icon requests as well as information about sunrise/sunset, I decided to bucket the requests.  The first bucket are those requests which I chose not take action on, but did address with reviewers. That is adding icons or background colors.  Fulfilling these feature requests would clutter the visualization and jeapordize the experience of color blind users, without adding significant value the visualization.  The next bucket is somehow indicating the water level point of no return to make it really obvious that "here thar be dragons.".  The final bucket is helping users understand the role amount of light plays in the hike window using sunrise/sunset as a surrogate.  The last two request buckets are reasonable and would add value, but I had reservations about simply adding indicators to the visualization as it may cause clutter and draw focus away from the hike window.  I decided to have the best of both worlds by adding buttons to toggle indicators on/off (? describe indicators here before final).
+
+## Resources
