@@ -82,12 +82,12 @@ Total Reviewers: 6
 | Difficulty determing format for date entry | 3 | added html placeholder for date format | IE & Firefox limitation |
 | Tooltip took a few minutes to understand  | 2 | none planned | none |
 | Change time format from 24 hour clock to period | 1 | none | difficult to see AM/PM |
-| Add graphics+, icons++, background colors+++ | 3 | see footnote and discussion |  |
+| Add graphics/+, icons++, background colors+++ | 3 | see footnote and discussion |  |
 | indicate water level threshold | 2 | add toggle feature for horizontal line @ 2' | none |
 | indicate sunrise and sunset | 3 | add toggle feature for sunrise and sunset markers | none |
 | Use more desriptive label than "All" for main series | 2 | Changed to Tide | none |
 
-+ graphics to indicate: low tide, high tide
+/+ graphics to indicate: low tide, high tide
 ++ icons to indicate: latest start (i.e. crosswalk signal), sunrise/sunset (i.e. sun/moon icons)
 +++ background colors to indicate: Sunrise/Sunset or amount of light
 
