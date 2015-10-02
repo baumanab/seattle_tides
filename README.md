@@ -9,7 +9,7 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 
  ## The Data
 
- Read more about the data that generated this visualization here: [ReadMe](All fields were exported to the .tsv as strings)
+ Read more about the data that generated this visualization here: [ReadMe and Data](https://github.com/baumanab/seattle_tides/tree/master/data)
  The source data acqusition and subsequent wrangling is documented here: [Data Wrangling Notebook](https://github.com/baumanab/seattle_tides/blob/master/sandbox.ipynb)
 
 
