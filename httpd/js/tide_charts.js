@@ -1,16 +1,4 @@
-
-
-//event listener called on submit from form
-function handleClick(event){
-                d3.selectAll("svg > *").remove(); // remove previous chart
-                //console.log(document.getElementById("myVal").value)
-                draw_charts(document.getElementById("myVal").value)
-                return false;
-            }	
-
-
-
-function draw_charts(val) {
+function draw_charts(val, button_id) {
 		// function draw charts reads in tide data and returns
 		//charts = n_dates of viable hike days from val 
 		//where val may be input by user through html form submission
@@ -208,28 +196,60 @@ function draw_charts(val) {
 			// draw vertical lines for start and hike completion values
 			// using dt objects calculated above
 			
+			//function to draw a dotted vertical line   
+           function vertical_line(xval) {  
+             svg.append("line")
+			   .attr("id", "start_line")
+			   .attr("class","marker_line")
+			   .attr("x1", x._scale(xval))
+			   .attr("x2", x._scale(xval))
+			   .attr("y1", myChart._yPixels())
+			   .attr("y2", myChart._yPixels() + myChart._heightPixels())
+			   .style("stroke", "red")
+			   .style("stroke-dasharray", "3");
+              };
 			
+			vertical_line(start_dt_parsed); // this line uses calculated dt values
 		  
-			svg.append("line")
-			  .attr("id", "start_line")
-			  .attr("class","marker_line")
-			  .attr("x1", x._scale(start_dt_parsed)) // this line uses calculated dt values
-			  .attr("x2", x._scale(start_dt_parsed)) // this line uses calculated dt values
-			  .attr("y1", myChart._yPixels())
-			  .attr("y2", myChart._yPixels() + myChart._heightPixels())
-			  .style("stroke", "red")
-			  .style("stroke-dasharray", "3");
-		
-		
-			svg.append("line")
-			  .attr("id", "complete_line")
-			  .attr("class","marker_line")
-			  .attr("x1", x._scale(extended)) // this line uses calculated dt values
-			  .attr("x2", x._scale(extended)) // this line uses calculated dt values
-			  .attr("y1", myChart._yPixels())
-			  .attr("y2", myChart._yPixels() + myChart._heightPixels())
-			  .style("stroke", "red")
-			  .style("stroke-dasharray", "3");
+			vertical_line(extended); // this line uses calculated dt values
+			
+			//function to draw a solid horizontal line
+
+			function horizontal_line(yval) {
+			  svg.append("line") 
+			    .attr("id", "tide_limit_line")
+                .attr("class","limit_line")
+                .attr("y1", y._scale(yval))
+                .attr("y2", y._scale(yval)) 
+                .attr("x1", myChart._xPixels())
+                .attr("x2", myChart._xPixels() + myChart._widthPixels())
+                .style("stroke", "red")
+                .style("stroke-solid", "4");
+            };
+			
+			// function to govern button response
+			
+			function buttons(button_id) {
+			  if (button_id === "tide_button") {
+			    horizontal_line(2);
+			  } else if (button_id === "show_sun") {
+			      console.log("show_sun");
+			  } else if (button_id === "both") {
+			      console.log("both");
+			  } else {
+			      console.log("nada");
+			  }			
+			};
+			
+			// execute button response if button id exists
+			
+			if (typeof button_id != "undefined") {
+			  //console.log(button_id);
+			  buttons(button_id);			  
+
+			};
+
+			  
 		  
 			  // If this is not in the last row remove the x text
 			  if (row < 1) {

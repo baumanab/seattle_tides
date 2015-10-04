@@ -34,10 +34,16 @@
     <p id= "chart_title">	
 	</p>
 
-    <form id= "submit_form" name="myform" onSubmit="return handleClick()">
+    <form id= "submit_form" name="myform" onSubmit="return handleSubmit();">
       <input name="Submit"  type="submit" value="Submit" >
-      <input type="date" id="myVal" min= "2015-08-21" max="2016-08-19" placeholder= "mm/dd/yyyy">
+      <input type="date" id="myVal" min="2015-08-21" max="2016-08-19" placeholder= "mm/dd/yyyy">
     </form>
+	
+	<div id="buttons">
+      <button style="left: 140px;" id="tide_button" value="tide_button" class="lineButton" onClick="return handleButton(this.id);">Show Tide Limit</button>
+      <button style="left: 250px;" id="show_sun" value="show_sun" class="lineButton" onClick="return handleButton(this.id);">Show Sunrise/Sunset</button>
+	  <button style="left: 360px;" id="show_both" value="show_both" class="lineButton" onClick="return handleButton(this.id);">Show Both</button>
+    </div>
 	
 
 
@@ -92,7 +98,7 @@
 	 </ul>
 	
 
-    <h3> This project is still ongoing and the to-do list inclues:</h3>
+    <h3> This project is still ongoing and the to-do list includes:</h3>
 	 <ul>
 		<li> Refactor JS, particularly breaking the charting function into pieces </li>
 		<li> Refactor and repackage python code for server execution.  The sandbox code is in the order I took to solve particular data processing challenges and 
