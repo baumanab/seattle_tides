@@ -224,14 +224,16 @@ function draw_charts(val, button_id) {
                 .attr("x1", myChart._xPixels())
                 .attr("x2", myChart._xPixels() + myChart._widthPixels())
                 .style("stroke", "red")
-                .style("stroke-solid", "4");
+                .style("stroke-solid", "4")
+				.style("opacity",.25)
+				.style("stroke-width", "10");
             };
 			
 			// function to govern button response
 			
 			function buttons(button_id) {
 			  if (button_id === "tide_button") {
-			    horizontal_line(2);
+			    horizontal_line(2.2);
 			  } else if (button_id === "show_sun") {
 			      console.log("show_sun");
 			  } else if (button_id === "both") {
