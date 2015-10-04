@@ -197,7 +197,7 @@ function draw_charts(val, button_id) {
 			// using dt objects calculated above
 			
 			//function to draw a dotted vertical line   
-           function vertical_line(xval) {  
+           function vertical_line(xval,vert_color,vert_style,vert_width,vert_opacity) {  
              svg.append("line")
 			   .attr("id", "start_line")
 			   .attr("class","marker_line")
@@ -205,13 +205,15 @@ function draw_charts(val, button_id) {
 			   .attr("x2", x._scale(xval))
 			   .attr("y1", myChart._yPixels())
 			   .attr("y2", myChart._yPixels() + myChart._heightPixels())
-			   .style("stroke", "red")
-			   .style("stroke-dasharray", "3");
+			   .style("stroke", vert_color)
+			   .style(vert_style, "3");
               };
-			
-			vertical_line(start_dt_parsed); // this line uses calculated dt values
+			  
+		    // draw vertical start and stop lines
+			vertical_line(start_dt_parsed,"red","stroke-dasharray","2","1"); // this line uses calculated dt values
 		  
-			vertical_line(extended); // this line uses calculated dt values
+			vertical_line(extended,"red","stroke-dasharray","2","1"); // this line uses calculated dt values
+			
 			
 			//function to draw a solid horizontal line
 
@@ -233,11 +235,14 @@ function draw_charts(val, button_id) {
 			
 			function buttons(button_id) {
 			  if (button_id === "tide_button") {
-			    horizontal_line(2.2);
+			    horizontal_line(2.2); // tide line
 			  } else if (button_id === "show_sun") {
-			      console.log("show_sun");
-			  } else if (button_id === "both") {
-			      console.log("both");
+			      vertical_line(start_dt_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
+				  vertical_line(extended,"orange","stroke-solid","4",".25"); // sunset_line
+			  } else if (button_id === "show_both") {
+			      horizontal_line(2.2); // tide_line
+				  vertical_line(start_dt_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
+				  vertical_line(extended,"orange","stroke-solid","4",".25"); // sunset_line
 			  } else {
 			      console.log("nada");
 			  }			
