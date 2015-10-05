@@ -225,7 +225,9 @@ function draw_charts(val, button_id) {
 			   .attr("y1", myChart._yPixels())
 			   .attr("y2", myChart._yPixels() + myChart._heightPixels())
 			   .style("stroke", vert_color)
-			   .style(vert_style, "3");
+			   .style(vert_style, "3")
+			   .style("opacity",vert_opacity)
+			   .style("stroke-width",vert_width);
               };
 			  
 		    // draw vertical start and stop lines
@@ -244,10 +246,10 @@ function draw_charts(val, button_id) {
                 .attr("y2", y._scale(yval)) 
                 .attr("x1", myChart._xPixels())
                 .attr("x2", myChart._xPixels() + myChart._widthPixels())
-                .style("stroke", "red")
+                .style("stroke", "#0072B2")
                 .style("stroke-solid", "4")
 				.style("opacity",.25)
-				.style("stroke-width", "10");
+				.style("stroke-width", "8");
             };
 			
 			// function to govern button response
@@ -256,12 +258,12 @@ function draw_charts(val, button_id) {
 			  if (button_id === "tide_button") {
 			    horizontal_line(2.2); // tide line
 			  } else if (button_id === "show_sun") {
-			      vertical_line(sunset_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
-				  vertical_line(sunrise_parsed,"orange","stroke-solid","4",".25"); // sunset_line
+			      vertical_line(sunset_parsed,"gray","stroke-solid","8",".5"); //sunrise_line
+				  vertical_line(sunrise_parsed,"orange","stroke-solid","8",".5"); // sunset_line
 			  } else if (button_id === "show_both") {
 			      horizontal_line(2.2); // tide_line
-				  vertical_line(sunset_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
-				  vertical_line(sunrise_parsed,"orange","stroke-solid","4",".25"); // sunset_line
+				  vertical_line(sunset_parsed,"gray","stroke-solid","8",".5"); //sunrise_line
+				  vertical_line(sunrise_parsed,"orange","stroke-solid","8",".5"); // sunset_line
 			  } else {
 			      console.log("nada");
 			  }			
