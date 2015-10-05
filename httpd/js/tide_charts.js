@@ -4,7 +4,7 @@ function draw_charts(val, button_id) {
 		//where val may be input by user through html form submission
 		
 		// read in data and transform Day and Level to numbers
-		d3.tsv("data/tide_days3.tsv", function (data) {	
+		d3.tsv("data/tide_days.tsv", function (data) {	
 		  data.forEach(function(d) {
 			d.Day = +d.Day;
 			d.Level = +d.Level;
@@ -90,8 +90,11 @@ function draw_charts(val, button_id) {
 			// convert start times from string to datetime object
 			// these values will ultimately be used to draw vertical lines
 			// and to slice the single date data	  
-			start_dt = data_startstop[0].DateTime;	  
-			//console.log(start_dt);
+			start_dt = data_startstop[0].DateTime;	
+              //console.log(data_startstop[0]);
+              //console.log(typeof data_startstop[0]);			
+			  //console.log(start_dt);
+			  //console.log(typeof start_dt);
 			// get the index
 			var start_index = data_date.map(function(d) {return d.DateTime})
 			  .indexOf(start_dt);
@@ -129,6 +132,22 @@ function draw_charts(val, button_id) {
 			// slice data bound by earliest start and 1 hour beyond latest start (complete hike), inclusive
 			var bounds = data_date.slice(start_index,complete_index + 1);
 			//console.log(bounds);
+			
+///////////////////////////////////////////Sunrise/Sunset DateTime extraction and Parse////////////////////////////////////////////
+
+            // Filter single date data for sunrise and sunset attributes
+			var sunrise = dimple.getUniqueValues(data_date, "Sunrise_dt")[0]
+			var sunset =  dimple.getUniqueValues(data_date, "Sunset_dt")[0]
+			  //console.log(sunrise);
+			  //console.log(sunset);
+		  
+		  
+			// parse sunrise/sunset strings to datetime objects	  
+			var sunrise_parsed = dt_parser.parse(sunrise); // see the d3 datetime parser parse
+			var sunset_parsed = dt_parser.parse(sunset); //parse d3 dt parser parse, good parser
+			  //console.log(sunrise_parsed);
+			  //console.log(sunset_parsed);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 		  
 			// Create and Position a Chart
 			var myChart = new dimple.chart(svg);
@@ -237,12 +256,12 @@ function draw_charts(val, button_id) {
 			  if (button_id === "tide_button") {
 			    horizontal_line(2.2); // tide line
 			  } else if (button_id === "show_sun") {
-			      vertical_line(start_dt_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
-				  vertical_line(extended,"orange","stroke-solid","4",".25"); // sunset_line
+			      vertical_line(sunset_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
+				  vertical_line(sunrise_parsed,"orange","stroke-solid","4",".25"); // sunset_line
 			  } else if (button_id === "show_both") {
 			      horizontal_line(2.2); // tide_line
-				  vertical_line(start_dt_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
-				  vertical_line(extended,"orange","stroke-solid","4",".25"); // sunset_line
+				  vertical_line(sunset_parsed,"gray","stroke-solid","4",".25"); //sunrise_line
+				  vertical_line(sunrise_parsed,"orange","stroke-solid","4",".25"); // sunset_line
 			  } else {
 			      console.log("nada");
 			  }			
