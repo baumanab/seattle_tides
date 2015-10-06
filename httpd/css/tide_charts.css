@@ -102,6 +102,7 @@ div#main_figure {
 p#figure_text.info {
 color: #555;
 font-weight: bold;
+max-width: 1100px;
 }
 
 
