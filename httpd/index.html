@@ -10,18 +10,20 @@
 <body>
 
   <div id= "intro" class="info">
-    <p>The explanatory data visualization below is in fulfilment of the requirements for Udacity's Data Analyst Nanodegree Project 6: "Make an Effective Data Visualization." 
-       The data visualization is designed to help the user determine when to make the ~2 mile hike between two Seattle Parks, Carkeek and Golden Gardens, 
-       via beach exposed at low tide.  A chart is displayed for each of the next four viable days, from the selected day (initial visualization is the current day).
-       The tide data in feet as a function of time (local) is represented by the solid line.  The viable hiking window is bracketed by two vertical lines and 
-       highlighted, with the circle representing the latest start time for a viable hike.  What are the criteria for a viable hike? I'm so glad you asked.  
-       They are 1 hour of daylight and 1 hour of exposed beach (tide level NGT 2 feet).
+    <p>This explanatory data visualization is in fulfillment of the requirements for Udacity's Data Analyst Nanodegree Project 6: "Make an Effective Data 
+	Visualization." The visualization shows the user viable windows to make the ~2 mile hike between Seattle's Carkeek and Golden Gardens parks, via beach 
+	exposed at low tide, as well as to understand how the viable hiking window is determined.  A chart is displayed for each of the next four viable days, 
+	from the selected day (initial visualization is the current day).  The tide data in feet relative to MLLW (Mean Lower Low Water) as a function of time 
+	(local) is represented by the solid grey line.  The viable hiking window is bracketed by two red vertical lines and highlighted in orange, with the blue 
+	circle representing the latest start time for a viable hike.  Interactive features consist of a tooltip (active when mousing over line plot) and 3 buttons
+	which either show the tide cutoff (~ 2 feet relative to MLLW) as a blue line, sunrise/sunset by orange/grey lines, or both.
 	</p>
 
     <p>You can learn more about this hike, here: <a href="https://sites.google.com/site/seattlemetrobushiking/main-page/in-city-hikes/carkeek-park-and-beach-walk-to-ballard" target="_blank">Seattle Metro Bus Hiking</a>.  
 	   If you are trying to determine when to make the hike between two of Seattle's most beautiful parks, you may find the interactive features helpful.  You 
 	   may enter or select a date, then submit it via the button that says.......wait for it....submit.  Hovering on the tide level line will display a tooltip 
-	   which gives the local time to the nearest 6 minute interval and the tide level to the nearest foot.
+	   which gives the local time to the nearest 6 minute interval and the tide level to the nearest foot.  The not so shiny drab buttons will show add
+	   horizontal or vertical lines representing the tide limit (~ 2ft) and sunrise (orange) and sunset (grey) times.
     </p>
        
     <p>The data is currently static, representing processed data from August 21st 2015 through August 20th 2016, and is not yet periodically updated.
@@ -72,8 +74,9 @@
 	</div>
 	
 	<p id="figure_text" class="info">
-	The solid line represents the tide level ,in feet, as function of time (local).  The dashed vertical lines represent the viable hike window 
-	(daylight present and 1 hour of tide level NGT 2 feet).  The circle indicates the latest start time. 
+	The solid grey line represents the tide level ,in feet relative to Mean Lower Low Water (MLLW), as function of time (local).  The red dashed vertical lines  
+	represent the viable hike window (daylight present and 1 hour of tide level NGT 2 feet).  The blue circle indicates the latest start time. Tide level 
+	threshold (blue line), and sunrise/sunset times (orange/grey lines), are toggled via the buttons above the figure.
     </p>	
   </div> 
 
@@ -86,17 +89,16 @@
 		
 		<h3>The general data acquisition and processing steps are: </h3>
  
-	 <ul>
+	 <ol>
 
-		<li> Query NOAA data (<a href="https://tidesandcurrents.noaa.gov/api/" target="_blank">NOAA COOPS API</a>) for the main Seattle station, returning tide level predictions for 1 year, at 6 minute intervals, as 
-		     a JSON (Javascript Object Notation) object. </li>
-		<li> Convert tide data to a PANDAS DataFrame (DF) </li>
+		<li> Query NOAA data (<a href="https://tidesandcurrents.noaa.gov/api/" target="_blank">NOAA COOPS API</a>) for the main Seattle station, 
+		returning tide level predictions (feet relative to Mean Lower Low Water) for 1 year, at 6 minute intervals, as a JSON (Javascript Object Notation) object. </li>
+		<li> Convert tide data to a PANDAS DataFrame (DF) and clean the data </li>
 		<li> Transform tide levels to those at Carkeek park (main station level + 5.5%) </li>
 		<li> Calculate sunrise and sunset times at Carkeek park </li>
 		<li> Determine when hiking criteria are met (1 hour of daylight, 1 hour of exposed beach) as well as latest start time. </li>
 		<li> Export the data as a TSV (Tab Separated Values) </li>
-	 </ul>
-	
+	 </ol>	
 
     <h3> This project is still ongoing and the to-do list includes:</h3>
 	 <ul>
@@ -115,11 +117,12 @@
 
 	 <ul>
 		<li> Daylight estimated as 30 minutes from sunrise to sunset </li>
-		<li> Sufficient exposed beach: tide level NGT 2ft </li>
+		<li> Sufficient exposed beach: tide level NGT ~2ft </li>
 		<li> Weather and wave conditions were not considered </li>
 		<li> Distance of hike is ~ 2 miles </li>
 		<li> Time to make the hike estimated at ~ 1 hour based on distance and the length of time it takes an average adult to walk a mile 
 		     (15 minutes) + time to smell the roses, or geoducks as the case may be. </li>
+		<li> Start times were calculated as 6 minutes until the tide level relative to MLLW is NGT 2 feet, so, the water level may be predicted to be slightly higher than 2 feet at start.  </li>
 		<li> use this data at your own risk, the results and assumptions need testing.  I plan to test them personally on nice, sunny days :) </li>
 	 </ul>
 	</p>
