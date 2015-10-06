@@ -116,8 +116,8 @@ Total Reviewers: 6
 ----------|---------|-------|----------|
 | Add units to x axis | 4 | units added | my rookie mistake |
 | Add time values to first row | 4 | time values added | previous state: tick marks only for first row |
-| Difficulty determing format for date entry | 3 | added html placeholder for date format | IE & Firefox limitation |
-| Tooltip took a few minutes to understand  | 2 | none planned | none |
+| Difficulty determining format for date entry | 3 | added html placeholder for date format | IE & Firefox limitation |
+| Tool-tip took a few minutes to understand  | 2 | none planned | none |
 | Change time format from 24 hour clock to period | 1 | none | difficult to see AM/PM |
 | Add graphics\+, icons++, background colors+++ | 3 | see footnote and discussion | none |
 | indicate water level threshold | 2 | add toggle feature for horizontal line @ ~ 2' | none |
@@ -181,7 +181,7 @@ One of these reviewers is color-blind and I solicted his input to determine if t
 ## Disclaimer, Assumptions, and Caveats ##
 
 - Daylight estimated as 30 minutes from sunrise to sunset
-- Sufficient exposed beach: tide level NGT 2ft
+- Sufficient exposed beach: tide level NGT ~ 2ft
 - Weather and wave conditions were not considered
 - Distance of hike is ~ 2 miles
 - Time to make the hike estimated at ~ 1 hour based on distance and the length of time it takes an average adult to walk a mile (15 minutes) + time to smell the roses, or geoducks as the case may be.
