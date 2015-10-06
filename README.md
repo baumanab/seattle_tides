@@ -106,7 +106,7 @@ Feedback from reviewers, as described in the Feedback section led the expansion 
 
 Version 1 lacked the tide limit and sunrise/sunset interactive features amongst other things (see table below).
 
-Nine reviewers were directed to my live project site (seattalytics.com) and invited to give feedback.  Six reviewers responded prior to project submission, 2 residing in the Great Lakes Region, 2 in OR, and 2 in the Seattle area.  The comments are generally positive with all reviewers finding the visualization a useful planning tool for determining when to embark on the low tide hike.  All reviewers noticed that the viable hiking window span varied by time of year or season.  What was not apparent to reviewers was the impact sunrise and sunset times (light dependent visibility) have on the window.  While each reviewer enjoyed the interactive features (tooltip and date submission at the time of review), there were some browser specific difficulties with date entry.  
+Nine reviewers were directed to my live project site (seattalytics.com) and invited to give feedback.  Six reviewers responded prior to project submission, 2 residing in the Great Lakes Region, 2 in OR, and 2 in the Seattle area.  The comments are generally positive with all reviewers finding the visualization a useful planning tool for determining when to embark on the low tide hike.  All reviewers noticed that the viable hiking window span varied by time of year or season.  What was not apparent to reviewers was the impact sunrise and sunset times (light dependent visibility) have on the window.  While each reviewer enjoyed the interactive features (tool-tip and date submission at the time of review), there were some browser specific difficulties with date entry.  
 
 One reviewer was selected, in part, because he is completely color blind.  I solicited not only his general review, but also inquired specifically if the encoding I used to draw focus (pre-attentive processing) to the hiking window, as well as other color choices were discernible to him.  He indicated that the colors and shades selected provided sufficient contrast for him to recognize the differences.  This same reviewer also pointed out that the visualization could not only serve hikers, but may also be useful for fisherman, gatherers (shells, clams, [geoduck](https://en.wikipedia.org/wiki/Geoduck)), and tidal pool enthusiasts.  This particular comment is very insightful and highlights the importance of seeking diverse perspectives for data product feedback.  Comments aggregated from all reviewers and associated actions are tabulated below.
 
@@ -158,8 +158,14 @@ One of these reviewers is color-blind and I solicted his input to determine if t
 - [Dimple.js](http://dimplejs.org/)
 - [Udacity Forums](https://discussions.udacity.com/users/ctrlaltdel/activity)
 - Carl Ward (Udacity Coach)
+- [W3 Schools](http://w3schools.com)
+- [NOAA COOPS API](https://tidesandcurrents.noaa.gov/api/)
+- [Coderunner Moment Example](http://code.runnable.com/Um0fYqDLgQlNAAXE/use-moment-js-to-format-time)
+- [Udacity's Data Visualization with D3.js](https://www.udacity.com/course/data-visualization-and-d3js--ud507)
+- [Udacity's Intro to HTML and CSS](https://www.udacity.com/course/intro-to-html-and-css--ud304)
+- [Udacity's Javascript Basics](https://www.udacity.com/course/javascript-basics--ud804-nd)
 
-## Future Work ### 
+## Future Work ##
 
 **This project is still ongoing and the to-do list includes:**
 
