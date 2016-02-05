@@ -1,22 +1,28 @@
 
 
-def query_builder(query_dict, base_url='http://tidesandcurrents.noaa.gov/api/datagetter?'):
+def query_builder(begin_dt, end_dt, base_url):
 
-    """Function accepts a base url (base_url)  and a query parameters/arguments dict (query_dict)
-    and returns an API query.  Note that NOAA COOPS API default is 6 minutes  and no interval need be
-    specified in the dict.  The default base URL is the COOPS endpoint."""
+    """Function accepts: a base url (API endpoint), a beginning and end datetime string in the form 'YYYYMMDD mm:ss'
+    which are <= 1 year apart. Function assembles a query parameters/arguments dict
+    and returns an API query and the query dictionary (query_dict). Note that NOAA COOPS API default is 6 minutes
+    and no interval need be specified in the dict. The relevant base URL is the COOPS endpoint
+    'http://tidesandcurrents.noaa.gov/api/datagetter?'."""
 
     import urllib
 
     base_url = base_url
 
+    # dict of NOAA query parameters/arguments
+
+    query_dict = dict(begin_date=begin_dt, end_date=end_dt, station='9447130', product='predictions', datum='mllw',
+                      units='english', time_zone='lst_ldt', format='json')
+
     # encode arguments
 
     encoded_args = urllib.urlencode(query_dict)
 
-    # create query from base url and encoded arguments
-
-    return base_url + encoded_args
+    # create and return query from base url and encoded arguments
+    return [base_url + encoded_args, query_dict]
 
 
 def dt_periodizer(query_dict):
@@ -40,11 +46,12 @@ def dt_periodizer(query_dict):
     return periods, begin, end
 
 
-def get_COOPS_json(query_dict, base_url):
+def get_COOPS_json(begin_dt, end_dt, base_url):
 
-    """Function accepts a NOAA tides and currents prediction query with form= json (query returns json object).
-    Function returns the hourly prediction data as a PANDAS DataFrame Object where the returned time becomes
-    the datetime index."""
+    """Function accepts: a base url (API endpoint), a beginning and end datetime string in the form 'YYYYMMDD mm:ss'
+    which are <= 1 year apart, passing these to the query_builder function.
+    Function returns the hourly prediction data as a PANDAS DataFrame Object where the returned time becomes the
+    datetime index."""
 
     # import dependencies
 
@@ -55,7 +62,7 @@ def get_COOPS_json(query_dict, base_url):
 
     # construct the query
 
-    query = query_builder(query_dict, base_url)
+    query, query_dict = query_builder(begin_dt, end_dt, base_url)
 
     # execute query and read response
 
@@ -71,7 +78,7 @@ def get_COOPS_json(query_dict, base_url):
         data.columns = ['Date_Time', 'Level']
         data.index = data.Date_Time
         data.index = pd.to_datetime(data.index)
-        data =data.drop('Date_Time', axis=1)
+        data = data.drop('Date_Time', axis=1)
 
         # reindex to fill in any missing time values, this needs
         # work to initialize the range on the data/query vs. hardcoding as it
@@ -87,7 +94,7 @@ def get_COOPS_json(query_dict, base_url):
         # a good start might be the median of the points directly above and
         # below the missing dt index. Since this is very few points typically
         # I am filling them with 100 for easy removal later. I would rather
-        # remove the points than fill in a nonmeasured value.
+        # remove the points than fill in a non-measured value.
 
         data  = data.reindex(rng, fill_value=100)
 
@@ -110,9 +117,6 @@ def get_COOPS_json(query_dict, base_url):
 
         return data
 
-# write function to populate df with sunrise and sunset
-# note that date will need formatting and conversion to local time
-
 
 def get_sunrise_sunset(date, lon= -122.3783, lat= 47.7128):
 
@@ -130,7 +134,6 @@ def get_sunrise_sunset(date, lon= -122.3783, lat= 47.7128):
     # and could use optimization
     o.date = str(date) + ' 19:00'
 
-
     # Location of Carkeek Park
     o.lon = str(lon)  # Note that lon should be in string format
     o.lat = str(lat)  # Note that lat should be in string format
@@ -145,7 +148,7 @@ def get_sunrise_sunset(date, lon= -122.3783, lat= 47.7128):
     local_sunrise = ephem.localtime(ephem.date(sunrise))
     local_sunset = ephem.localtime(ephem.date(sunset))
 
-    return {'sunrise':local_sunrise, 'sunset':local_sunset}
+    return {'sunrise': local_sunrise, 'sunset': local_sunset}
 
 
 def enough_light(df):
@@ -181,7 +184,7 @@ def enough_beach(row):
     indicates there is at least 1 hour where
     the tide is <= 2 feet"""
 
-    if row.shift_level <= 2 and row.Level <=2:
+    if row.shift_level <= 2 and row.Level <= 2:
         return 'yes'
     else:
         return 'no'
