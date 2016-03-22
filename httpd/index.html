@@ -11,7 +11,7 @@
 
   <div id= "intro" class="info">
     <p>This explanatory data visualization is in fulfillment of the requirements for Udacity's Data Analyst Nanodegree Project 6: "Make an Effective Data 
-	Visualization." The visualization shows the user viable windows to make the ~2 mile hike between Seattle's Carkeek and Golden Gardens parks, via beach 
+	Visualizations." The visualization shows the user viable windows to make the ~2 mile hike between Seattle's Carkeek and Golden Gardens parks, via beach 
 	exposed at low tide, as well as to understand how the viable hiking window is determined.  A chart is displayed for each of the next four viable days, 
 	from the selected day (initial visualization is the current day).  The tide data in feet relative to MLLW (Mean Lower Low Water) as a function of time 
 	(local) is represented by the solid grey line.  The viable hiking window is bracketed by two red vertical lines and highlighted in orange, with the blue 
@@ -26,8 +26,8 @@
 	   horizontal or vertical lines representing the tide limit (~ 2ft) and sunrise (orange) and sunset (grey) times.
     </p>
        
-    <p>The data is currently static, representing processed data from August 21st 2015 through August 20th 2016, and is not yet periodically updated.
-	   Go ahead and try past dates, to see how this works.
+    <p>The current data extends from August 21st 2015 through August 20th 2016.  The python processing script that feeds this .js visualization is now
+	command line executable with a start and end data as command line arguments so that the data can be periodically updated.
     </p>
   </div>
   
@@ -103,12 +103,8 @@
     <h3> This project is still ongoing and the to-do list includes:</h3>
 	 <ul>
 		<li> Refactor JS, particularly breaking the charting function into pieces </li>
-		<li> Refactor and repackage python code for server execution.  The sandbox code is in the order I took to solve particular data processing challenges and 
-		     should be reorganized and aggregated for efficiency and readability. </li>
-		<li> Extend the exploratory data analysis (EDA) using R to summarize and visually explore the data, with particular focus on distribution of viable days. </li>
 		<li> Add a color code to the drop down calendar indicating viable days, to help the user select a start day. </li>
 		<li> Increase the precision of the tide level tool tip to 1 floating decimal </li>
-		<li> Set up the query and data processing on this server to update the data each week. </li>
 		<li> Apply a responsive web framework (bootstrap or flexbox) and re-style this site. </li>
 		<li> Re-work the chart svg and draw function for responsiveness. </li>
 	 </ul>
