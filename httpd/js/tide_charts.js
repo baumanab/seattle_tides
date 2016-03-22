@@ -4,7 +4,7 @@ function draw_charts(val, button_id) {
 		//where val may be input by user through html form submission
 		
 		// read in data and transform Day and Level to numbers
-		d3.tsv("data/tide_days.tsv", function (data) {	
+		d3.tsv('https://raw.githubusercontent.com/baumanab/seattle_tides/master/data/tide_days.tsv', function (data) {	
 		  data.forEach(function(d) {
 			d.Day = +d.Day;
 			d.Level = +d.Level;
