@@ -103,7 +103,8 @@ def get_COOPS_json(begin_dt, end_dt, base_url):
 
         # adjust level to account for distance of Carkeek from NOAA
         # monitoring station (+ 5.5%)
-        data.Level = np.round(data.Level + (.05 * data.Level), decimals=2)
+        level_adjust = data.Level.values + (.05 * data.Level.values)
+        data.Level = np.round(level_adjust, decimals=2)
 
         # add date column to dataframe for later use with weather data
         data['Date'] = data.index.date
