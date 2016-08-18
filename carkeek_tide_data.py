@@ -26,7 +26,7 @@ def carkeek_tide_processor(begin_dt, end_dt):
     api_endpoint = 'http://tidesandcurrents.noaa.gov/api/datagetter?'  # COOPS API endpoint
 
     # get and process 6 minute tide prediction data
-    df_sixmin = tide_tools.get_COOPS_json('20150821 00:00', '20160820 23:00', api_endpoint)
+    df_sixmin = tide_tools.get_COOPS_json(begin_dt, end_dt, api_endpoint)
 
     # lambda function to calculate sunrise and sunset times and populate df columns
     df_sixmin['Sunrise_dt'] = df_sixmin.Date.apply(lambda x: tide_tools.get_sunrise_sunset(x)['sunrise'])
