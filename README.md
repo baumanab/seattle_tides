@@ -22,6 +22,8 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 
  Read more about the data that generated this visualization here: [ReadMe and Data](https://github.com/baumanab/seattle_tides/tree/master/data)
  The source data acqusition and subsequent wrangling is documented here: [Data Wrangling Notebook](https://github.com/baumanab/seattle_tides/blob/master/sandbox.ipynb)
+ The data wrangling code from the Jupyter Notebook was organized and refactored into a command line executable python script with
+ the start and end date as arguments, and can be found here: [Python Processing Script](https://github.com/baumanab/seattle_tides/blob/master/carkeek_tide_data.py)
 
 ### The general data acquisition and processing steps are: ###
 
@@ -31,6 +33,7 @@ This explanatory data visualization is in fulfilment of the requirements for Uda
 4. Calculate sunrise and sunset times at Carkeek park
 5. Determine when hiking criteria are met (1 hour of daylight, 1 hour of exposed beach) as well as latest start time.
 6. Export the data as a TSV (Tab Separated Values)
+7. .js picks up the TSV (hosted on github) and performs addtional DateTime calculations and data subsetting, to enable the visualization.
 
 
 
