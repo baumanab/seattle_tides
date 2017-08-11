@@ -95,7 +95,11 @@ def get_COOPS_json(begin_dt, end_dt, base_url):
         # below the missing dt index. Since this is very few points typically
         # I am filling them with 100 for easy removal later. I would rather
         # remove the points than fill in a non-measured value.
+        
+        # protect against index duplicates
+        data = data.reset_index()
 
+        # reindex to datetime
         data  = data.reindex(rng, fill_value=100)
 
         # convert value from string to float
